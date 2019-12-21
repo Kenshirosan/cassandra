@@ -1,11 +1,4 @@
- CREATE TABLE [ IF NOT EXISTS ] table_name
-                            '('
-                                column_definition
-                                ( ',' column_definition )*
-                                [ ',' PRIMARY KEY '(' primary_key ')' ]
-                            ')' [ WITH table_options ]
-
-CREATE TABLE merchants (
+ CREATE TABLE merchants (
     id uuid PRIMARY KEY,
     common_name text,
     merchant_type text
