@@ -1,0 +1,6 @@
+/nbproject
+client/node_modules/
+node_modules
+.project
+.settings
+node.core
