@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const cassandra = require('cassandra-driver');
 const Mapper = cassandra.mapping.Mapper;
 
@@ -8,8 +9,8 @@ const api = require('./api/api');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
-app.use('/', api);
+app.use(cors());
+app.use('/api', api);
 
 
 

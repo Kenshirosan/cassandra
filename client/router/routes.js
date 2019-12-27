@@ -8,12 +8,22 @@
 import VueRouter from 'vue-router';
 
 import Home from '../src/components/Home.vue';
-import Test from '../src/components/Test.vue';
+import Merchants from '../src/components/Merchants.vue';
 
+// @TODO find a way to proxy like that.
+const proxyTable = {
+    '/api':{
+        target: 'http://localhost:3000',
+        changeOrigin: false,
+        pathRewrite: {
+            '^/api': ''
+        }
+    }
+ };
 
 const routes = [
     { path: '', component: Home, props: { msg: 'Hello Toto' }},
-    { path: '/test', component: Test }
+    { path: '/test', component: Merchants }
 ];
 
 const router = new VueRouter({

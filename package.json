@@ -1,15 +1,14 @@
 {
     "name": "cassandra",
     "version": "1.0.0",
-    "description": "",
+    "description": "Application for learning Apache Cassandra",
     "main": "app.js",
     "scripts": {
-        "dev": "nodemon app.js",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
         "start": "node app.js",
         "client-install": "npm install --prefix client",
         "server": "nodemon app.js",
         "client": "npm run serve --prefix client",
-        "dev": "concurrently \"npm run server\" \"npm run client\"",
         "test": "echo \"Error: no test specified\" && exit 1",
         "post-build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
     },
@@ -17,7 +16,7 @@
         "type": "git",
         "url": "git+https://github.com/Kenshirosan/cassandra.git"
     },
-    "author": "",
+    "author": "Laurent",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/Kenshirosan/cassandra/issues"
@@ -27,6 +26,7 @@
         "body-parser": "^1.19.0",
         "cassandra-driver": "^4.3.1",
         "concurrently": "^5.0.2",
+        "cors": "^2.8.5",
         "express": "^4.17.1",
         "nodemon": "^2.0.2"
     }
