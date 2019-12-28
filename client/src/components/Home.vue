@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <router-link to="/merchants">See merchants</router-link>
+    <router-link to="/timeline">See timeline</router-link>
   </div>
 </template>
 

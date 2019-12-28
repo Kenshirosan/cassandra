@@ -18,19 +18,17 @@ class Merchant extends Mapper {
 
     constructor(client) {
         super(client, mappingOptions);
-        this.client = client;
-        this.mappingOptions = mappingOptions;
-        this.test = this.forModel('Merchant');
+        this.merch = this.forModel('Merchant');
     }
 
     getMerchant(id) {
-        return this.test.get({id})
-            .then(res => console.log(res))
+        return this.merch.get({id})
+            .then(res => res)
             .catch(e => console.log(e));
     }
 
     getAll() {
-        return this.test.findAll()
+        return this.merch.findAll()
             .then(res => res)
             .catch(err => console.log(err));
     }

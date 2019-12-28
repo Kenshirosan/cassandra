@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 //@author Laurent <laurent@marseille-web.fr>
-const {client, Mapper} = require('../CassandraClient');
+const {Mapper} = require('../CassandraClient');
 
 const mappingOptions = {
     models: {
@@ -16,22 +16,20 @@ const mappingOptions = {
 
 class Timeline extends Mapper {
 
-    constructor() {
+    constructor(client) {
         super(client, mappingOptions);
-        this.client = client;
-        this.mappingOptions = mappingOptions;
-        this.test = this.forModel('Timeline');
+        this.time = this.forModel('Timeline');
     }
 
     getTimeline(id) {
-        return this.test.get({id})
-            .then(res => console.log(res))
+        return this.time.get({id})
+            .then(res => res)
             .catch(e => console.log(e));
     }
 
     getAll() {
-        return this.test.findAll()
-            .then(res => console.log(res))
+        return this.time.findAll()
+            .then(res => res)
             .catch(err => console.log(err));
     }
 }
