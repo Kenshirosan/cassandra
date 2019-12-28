@@ -1,8 +1,8 @@
 <template>
-  <div class="merchants">
-    <h1>Merchants Component</h1>
+  <div class="timeline">
+    <h1>Timeline Component</h1>
     <router-link to="/">Go Home</router-link>
-    <router-link to="/timeline">Go Home</router-link>
+    <router-link to="/merchants">View merchants</router-link>
   </div>
 </template>
 
@@ -10,22 +10,22 @@
     import api from '@/services/Api';
 
     export default {
-        name: 'Merchants',
+        name: 'Timeline',
 
         data() {
             return {
-                merchants: {}
+                timeline: {}
             }
         },
 
         mounted() {
-            this.getMerchants();
+            this.getTimeline();
         },
 
         methods: {
-            getMerchants() {
-                api().get('/api/merchants')
-                    .then(res => this.merchants = res.data)
+            getTimeline() {
+                api().get('/api/timeline')
+                    .then(res => this.timeline = res.data)
                     .catch(err => console.log(err));
             }
         }
@@ -38,3 +38,4 @@
         color: red;
     }
 </style>
+

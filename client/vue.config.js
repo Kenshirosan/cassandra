@@ -5,11 +5,9 @@
  */
 //@author Laurent <laurent@marseille-web.fr>
 
-// @TODO voir pour les autres options, CSRF etc etc
 
-import axios from 'axios';
-
-
-export default () => {
-  return axios.create({});
-}
+module.exports = {
+  devServer: {
+    proxy: 'http://freebsd.test:3000'
+  }
+};
