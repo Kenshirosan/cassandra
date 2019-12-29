@@ -17,30 +17,28 @@
 </template>
 
 <script>
-    import api from '@/services/Api';
 
-    export default {
-        name: 'Merchants',
+export default {
+    name: 'Merchants',
 
-        data() {
-            return {
-                merchants: {}
-            }
+    data() {
+        return {
+            merchants: {},
+        };
+    },
+
+    mounted() {
+        this.getMerchants();
+    },
+
+    methods: {
+        getMerchants() {
+            this.axios.get('/api/merchants')
+                .then((res) => { this.merchants = res.data._rs; })
+                .catch(err => console.log(err));
         },
-
-        mounted() {
-            this.getMerchants();
-        },
-
-        methods: {
-            getMerchants() {
-                api().get('/api/merchants')
-                    .then(res => {
-                        this.merchants = res.data._rs;
-                    }).catch(err => console.log(err));
-            }
-        }
-    }
+    },
+};
 </script>
 
 

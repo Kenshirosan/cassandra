@@ -8,6 +8,6 @@
 
 module.exports = {
   devServer: {
-    proxy: 'http://freebsd.test:3000'
+    proxy: 'http://freebsd.test:5000'
   }
 };

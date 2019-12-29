@@ -1,4 +1,4 @@
-//@author Laurent <laurent@marseille-web.fr>
+// @author Laurent <laurent@marseille-web.fr>
 
 const express = require('express');
 const router = express.Router();

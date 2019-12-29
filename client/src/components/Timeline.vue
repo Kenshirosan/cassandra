@@ -19,29 +19,28 @@
 </template>
 
 <script>
-    import api from '@/services/Api';
 
-    export default {
-        name: 'Timeline',
+export default {
+    name: 'Timeline',
 
-        data() {
-            return {
-                timelines: {}
-            }
+    data() {
+        return {
+            timelines: {},
+        };
+    },
+
+    mounted() {
+        this.getTimeline();
+    },
+
+    methods: {
+        getTimeline() {
+            this.axios.get('/api/timeline')
+                .then(res => this.timelines = res.data._rs)
+                .catch(err => console.log(err));
         },
-
-        mounted() {
-            this.getTimeline();
-        },
-
-        methods: {
-            getTimeline() {
-                api().get('/api/timeline')
-                    .then(res => this.timelines = res.data._rs)
-                    .catch(err => console.log(err));
-            }
-        }
-    }
+    },
+};
 </script>
 
 
@@ -50,4 +49,3 @@
         color: red;
     }
 </style>
-
