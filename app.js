@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const cassandra = require('cassandra-driver');
 const Mapper = cassandra.mapping.Mapper;
 const {client} = require('./CassandraClient');
-const api = require('./api/api');
+const api = require('./api');
 
 dotenv.config();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -21,6 +21,3 @@ client.connect().then(() => console.log('Cassandra Connected! 🎅🔥🔥')).ca
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Cassandra app listening on port ${port}! 🔥🔥🔥`));
-
-
-

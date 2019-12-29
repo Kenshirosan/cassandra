@@ -1,0 +1,12 @@
+{
+    "elements": {
+        "router-link": {},
+        "router-view": {}
+    },
+    "attributes": {
+        "v-if": {},
+        "v-for": {},
+        "scoped": {},
+        "to": {}
+    }
+}

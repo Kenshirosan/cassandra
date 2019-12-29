@@ -22,6 +22,12 @@ CREATE TABLE loads (
 ) WITH CLUSTERING ORDER BY (mtime DESC);
 
 
+CREATE TABLE users (
+    id uuid PRIMARY KEY,
+    email text,
+    username text,
+) WITH comment ='Fake users table';
+
 cassandra defaults: cassandra / cassandra
 
 In cassandra.yaml:
