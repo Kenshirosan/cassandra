@@ -11,8 +11,6 @@
             <li>{{ merchant.merchant_type }}</li>
         </ul>
     </div>
-
-
   </div>
 </template>
 
@@ -34,7 +32,7 @@ export default {
     methods: {
         getMerchants() {
             this.axios.get('/api/merchants')
-                .then((res) => { this.merchants = res.data._rs; })
+                .then(res => this.merchants = res.data)
                 .catch(err => console.log(err));
         },
     },

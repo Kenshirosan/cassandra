@@ -11,7 +11,7 @@ const User = require('../Models/User');
 router.get('/merchants', (req, res) => {
     const merchant = new Merchant(client);
     merchant.getAll()
-        .then(response => res.json(response))
+        .then(response => res.json(response._rs))
         .catch(e => console.log(e));
 });
 
@@ -20,7 +20,7 @@ router.get('/merchants', (req, res) => {
 router.get('/timeline', (req, res) => {
     const timeline = new Timeline(client);
     timeline.getAll()
-        .then(response => res.json(response))
+        .then(response => res.json(response._rs))
         .catch(e => console.log(e))
 });
 
@@ -29,7 +29,7 @@ router.get('/timeline', (req, res) => {
 router.get('/users/:email', (req, res) => {
     const user = new User(client);
     user.getUser(req.params.email)
-        .then(response => res.json(response))
+        .then(response => res.json(response._rs))
         .catch(e => console.log(e));
 });
 

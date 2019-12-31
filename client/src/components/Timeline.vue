@@ -36,7 +36,7 @@ export default {
     methods: {
         getTimeline() {
             this.axios.get('/api/timeline')
-                .then(res => this.timelines = res.data._rs)
+                .then(res => this.timelines = res.data)
                 .catch(err => console.log(err));
         },
     },

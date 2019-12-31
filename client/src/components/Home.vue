@@ -7,15 +7,22 @@
                 <router-link to="/merchants">See merchants</router-link>
                 <router-link to="/timeline">See timeline</router-link>
             </div>
+            <p>{{ message }}</p>
+            <ul>
+                <li>{{ user.id }}</li>
+                <li>{{ user.username }}</li>
+                <li>{{ user.email }}</li>
+            </ul>
+
         </div>
         <div v-if="!loading && error">
-            something wrong happened....
+            <p>{{ message }}</p>
         </div>
     </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
     name: 'Home',
@@ -25,22 +32,28 @@ export default {
 
     data() {
         return {
-            user: {},
-            email: 'l.neveux@icloud.com',
             loading: true,
             error: false,
         };
     },
 
+    computed:
+        mapState({
+            user: state => state.user,
+            message: state => state.message,
+        }),
+
     methods: {
-        ...mapActions(['initialLoad']),
+        ...mapActions(['initialLoad', 'load_ok', 'load_error']),
     },
 
     async mounted() {
         try {
             await this.initialLoad();
+            await this.load_ok();
             this.loading = false;
         } catch (e) {
+            await this.load_error();
             this.loading = false;
             this.error = true;
         }
