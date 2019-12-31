@@ -1,5 +1,3 @@
-// @author Laurent <laurent@marseille-web.fr>
-
 const express = require('express');
 const router = express.Router();
 const {client} = require('../CassandraClient');
@@ -28,9 +26,9 @@ router.get('/timeline', (req, res) => {
 
 
 // @route  /api/users
-router.post('/users', (req, res) => {
+router.get('/users/:email', (req, res) => {
     const user = new User(client);
-    user.getUser('sebastien@dange.fr')
+    user.getUser(req.params.email)
         .then(response => res.json(response))
         .catch(e => console.log(e));
 });

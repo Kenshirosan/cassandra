@@ -23,7 +23,7 @@ export default new Vuex.Store({
             if (localStorage.bgtrackerjwt) {
                 Vue.axios.defaults.headers.common.Authorization = `Bearer ${localStorage.bgtrackerjwt}`;
                 const res = await Vue.axios.get('/api/auth/currentUser');
-                context.commit('CURRENT_USER_FETCHED', res.data.user);
+                context.commit('CURRENT_USER_FETCHED', res.data.rows[0]);
             }
         },
     },

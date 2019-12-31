@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 //@author Laurent <laurent@marseille-web.fr>
-const {Mapper} = require('../CassandraClient');
+const Model = require('./Model');
 
 const mappingOptions = {
     models: {
@@ -14,7 +14,7 @@ const mappingOptions = {
     }
 };
 
-class User extends Mapper {
+class User extends Model {
 
     constructor(client) {
         super(client, mappingOptions);
@@ -22,7 +22,7 @@ class User extends Mapper {
     }
 
     getUser(email) {
-        return this.user.find({email})
+        return this.user.find({ email })
             .then(res => res)
             .catch(e => console.log(e));
     }

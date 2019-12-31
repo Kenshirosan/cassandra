@@ -34,13 +34,6 @@ export default {
 
     methods: {
         ...mapActions(['initialLoad']),
-
-
-        getUser(email) {
-            this.axios.post('/api/users', email)
-                .then((res) => { this.user = res.data._rs; })
-                .catch(err => console.log(err));
-        },
     },
 
     async mounted() {
@@ -48,7 +41,6 @@ export default {
             await this.initialLoad();
             this.loading = false;
         } catch (e) {
-            await this.getUser(this.email);
             this.loading = false;
             this.error = true;
         }

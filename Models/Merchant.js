@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 //@author Laurent <laurent@marseille-web.fr>
-const {Mapper} = require('../CassandraClient');
+const Model = require('./Model');
 
 const mappingOptions = {
     models: {
@@ -14,7 +14,7 @@ const mappingOptions = {
     }
 };
 
-class Merchant extends Mapper {
+class Merchant extends Model {
 
     constructor(client) {
         super(client, mappingOptions);
