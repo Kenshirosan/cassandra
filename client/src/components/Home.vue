@@ -3,19 +3,8 @@
         <div v-if="loading">
             <Loader></Loader>
         </div>
-        <div v-if="!loading && !error">
-            <div class="hello">
-                <h1>{{ msg }}</h1>
-                <router-link to="/merchants">See merchants</router-link>
-                <router-link to="/timeline">See timeline</router-link>
-            </div>
-            <p>{{ message }}</p>
-            <ul>
-                <li>{{ user.id }}</li>
-                <li>{{ user.username }}</li>
-                <li>{{ user.email }}</li>
-            </ul>
-
+        <div v-if="!loading && !error" class="grid-container landing">
+            <LandingPage :data="data"></LandingPage>
         </div>
         <div v-if="!loading && error">
             <p>{{ message }}</p>
@@ -25,16 +14,13 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
-import Loader from './Loader.vue';
+import Loader from './subcomponents/Loader.vue';
+import LandingPage from './layout/LandingPage.vue';
 
 export default {
-    components: { Loader },
+    components: { Loader, LandingPage },
 
     name: 'Home',
-
-    props: {
-        msg: String,
-    },
 
     data() {
         return {
@@ -45,7 +31,7 @@ export default {
 
     computed:
         mapState({
-            user: state => state.user,
+            data: state => state.user,
             message: state => state.message,
         }),
 
@@ -66,21 +52,3 @@ export default {
 };
 
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-    margin: 40px 0 0;
-}
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-a {
-    color: #42b983;
-}
-</style>

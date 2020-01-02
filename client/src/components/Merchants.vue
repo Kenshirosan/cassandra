@@ -1,23 +1,25 @@
 <template>
   <div class="merchants">
     <h1>Merchants Component</h1>
-    <router-link to="/">Go Home</router-link>
-    <router-link to="/timeline">View Timeline</router-link>
-
     <div v-if="merchants">
-        <ul v-for="merchant in merchants.rows" v-bind:key="merchant.id">
-            <li>{{ merchant.id }}</li>
-            <li>{{ merchant.common_name }}</li>
-            <li>{{ merchant.merchant_type }}</li>
-        </ul>
+        <div v-for="merchant in merchants.rows" v-bind:key="merchant.id">
+            <Card :data="merchant">
+                <template v-slot:uuid>{{ merchant.id }}</template>
+                <template v-slot:name>{{ merchant.common_name }}</template>
+                <template v-slot:description>{{ merchant.merchant_type }}</template>
+            </Card>
+        </div>
     </div>
   </div>
 </template>
 
 <script>
+import Card from './layout/Card.vue';
 
 export default {
     name: 'Merchants',
+
+    components: { Card },
 
     data() {
         return {

@@ -5,6 +5,7 @@
  */
 //@author Laurent <laurent@marseille-web.fr>
 const Model = require('./Model');
+const TimeUuid = require('cassandra-driver').types.TimeUuid;
 
 const mappingOptions = {
     models: {
@@ -28,8 +29,17 @@ class Timeline extends Model {
     }
 
     getAll() {
+        const timelines = [];
         return this.time.findAll()
-            .then(res => res)
+            .then(res => {
+                res.forEach(r => {
+                    if(r.time != null) {
+                        r.time = r.time.getDate();
+                    }
+                    timelines.push(r);
+                })
+                return timelines;
+            })
             .catch(err => console.log(err));
     }
 }

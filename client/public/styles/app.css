@@ -1,0 +1,89 @@
+.grid-container {
+    display: grid;
+    grid-template-area:
+        'header header header header header header'
+}
+
+.clear-right {
+    clear: right;
+}
+
+.clear-left {
+    clear: left;
+}
+
+.landing {
+    padding: 1em;
+}
+
+header {
+    background-color: #9862B3;
+    margin-bottom: 2em;
+}
+
+header nav {
+    display: grid;
+    grid-template-columns: 60% auto auto auto;
+    align-items: center;
+    grid-gap: 20px;
+}
+
+header nav {
+    padding: 1em;
+}
+
+header nav img {
+    max-width: 60px;
+    max-height: 60px;
+    margin-left: 3em;
+}
+
+header nav a:not(:first-of-type) {
+    text-decoration: none;
+    padding: 1em;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}
+
+header nav a.is-active {
+    color: orangered;
+    outline:none;
+}
+
+.card {
+    padding: 1em;
+    background-color: #EABFFF;
+    border: 1px solid #F0FFBF;
+    width: 33%;
+}
+
+.card .card-title {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #F6FFD9;
+    text-align: center;
+}
+
+.card .card-content p {
+    line-height: 2;
+    letter-spacing: 2px;
+}
+
+.card .card-footer {
+    margin-top: 1em;
+    padding: 1em;
+    border-top: 1px solid black;
+}
+
+.card-footer p {
+    width: 50%;
+}
+
+.card-footer button {
+    float: right;
+    display: inline;
+    border: none;
+    padding: 1em;
+    background-color: #FFC40E;
+}

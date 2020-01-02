@@ -4,12 +4,28 @@
         "router-view": {},
         "router-link": {},
         "Loader": {},
-        "style": {}
+        "LandingPage": {},
+        "style": {},
+        "Card": {},
+        "slot": {},
+        "template": {}
     },
     "attributes": {
+        "crossorigin": {},
         "v-if": {},
+        ":user": {
+            "context": "Card"
+        },
+        "integrity": {},
+        "v-slot": {
+            "context": "template"
+        },
+        "v-slot:uuid": {},
+        "v-slot:name": {},
+        "v-slot:description": {},
         "scoped": {},
         "v-for": {},
+        "name": {},
         "to": {}
     }
 }

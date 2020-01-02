@@ -7,7 +7,7 @@ import Timeline from '../components/Timeline.vue';
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '', component: Home, props: { msg: 'Hello Toto' } },
+    { path: '/', component: Home },
     { path: '/merchants', component: Merchants },
     { path: '/timeline', component: Timeline },
 ];
@@ -15,6 +15,7 @@ const routes = [
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
+    linkActiveClass: 'is-active',
     routes,
 });
 

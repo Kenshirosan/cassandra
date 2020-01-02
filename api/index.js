@@ -20,7 +20,7 @@ router.get('/merchants', (req, res) => {
 router.get('/timeline', (req, res) => {
     const timeline = new Timeline(client);
     timeline.getAll()
-        .then(response => res.json(response._rs))
+        .then(response => res.json(response))
         .catch(e => console.log(e))
 });
 
