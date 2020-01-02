@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div v-if="loading">Loading...</div>
+        <div v-if="loading">
+            <Loader></Loader>
+        </div>
         <div v-if="!loading && !error">
             <div class="hello">
                 <h1>{{ msg }}</h1>
@@ -23,9 +25,13 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import Loader from './Loader.vue';
 
 export default {
+    components: { Loader },
+
     name: 'Home',
+
     props: {
         msg: String,
     },
@@ -44,13 +50,12 @@ export default {
         }),
 
     methods: {
-        ...mapActions(['initialLoad', 'load_ok', 'load_error']),
+        ...mapActions(['initialLoad', 'load_error']),
     },
 
     async mounted() {
         try {
             await this.initialLoad();
-            await this.load_ok();
             this.loading = false;
         } catch (e) {
             await this.load_error();

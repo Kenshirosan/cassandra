@@ -25,7 +25,7 @@ router.get('/timeline', (req, res) => {
 });
 
 
-// @route  /api/users
+// @route  /api/${email}
 router.get('/users/:email', (req, res) => {
     const user = new User(client);
     user.getUser(req.params.email)

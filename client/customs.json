@@ -3,7 +3,8 @@
         "style=\"sass\"": {},
         "router-view": {},
         "router-link": {},
-        "Loader": {}
+        "Loader": {},
+        "style": {}
     },
     "attributes": {
         "v-if": {},

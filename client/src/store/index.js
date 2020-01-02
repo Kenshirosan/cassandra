@@ -30,16 +30,13 @@ export default new Vuex.Store({
                 Vue.axios.defaults.headers.common.Authorization = `Bearer ${localStorage.bgtrackerjwt}`;
                 const res = await Vue.axios.get('/api/auth/currentUser');
                 context.commit('CURRENT_USER_FETCHED', res.data.rows[0]);
+                const message = { success: 'Success' };
+                context.commit('LOAD_OK', message);
             }
         },
 
-        async load_ok(context) {
-            const message = { success: 'Success' };
-            context.commit('LOAD_OK', message);
-        },
-
         async load_error(context) {
-            const message = { error: 'Something Wrong Happened' };
+            const message = await { error: 'Something Wrong Happened' };
             context.commit('LOAD_ERROR', message);
         },
     },
