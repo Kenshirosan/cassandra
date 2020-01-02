@@ -9,7 +9,8 @@ const path = require('path');
 
 module.exports = {
     devServer: {
-        proxy: 'http://freebsd.test:5000'
+        proxy: 'http://freebsd.test:5000',
+        disableHostCheck: true
     },
 
     chainWebpack: config => {
