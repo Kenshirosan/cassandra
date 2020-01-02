@@ -1,12 +1,14 @@
 {
     "elements": {
+        "style=\"sass\"": {},
+        "router-view": {},
         "router-link": {},
-        "router-view": {}
+        "Loader": {}
     },
     "attributes": {
         "v-if": {},
-        "v-for": {},
         "scoped": {},
+        "v-for": {},
         "to": {}
     }
 }
