@@ -2,7 +2,7 @@
     <header>
         <nav>
             <router-link exact to="/">
-                <img src="/img/icons/msapplication-icon-144x144.png" alt="">
+                <img src="/img/icons/msapplication-icon-144x144.png" alt="Our Logo">
             </router-link>
             <router-link exact to="/">Go Home</router-link>
             <router-link to="/timeline">View Timeline</router-link>

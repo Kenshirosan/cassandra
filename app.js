@@ -5,7 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const cassandra = require('cassandra-driver');
 const Mapper = cassandra.mapping.Mapper;
-const {client} = require('./CassandraClient');
+const { client } = require('./CassandraClient');
 const api = require('./api');
 const auth = require('./api/auth');
 

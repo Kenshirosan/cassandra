@@ -7,6 +7,8 @@ client.connect().then(() => {
 	console.error(`${e.message}`);
 });
 
+// @TODO: replace timeuuid with timestamps
+
 const queries = [
     `CREATE TABLE users (
         email text PRIMARY KEY,

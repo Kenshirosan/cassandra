@@ -4,9 +4,9 @@
     grid-area: main;
     display: grid;
     grid-template-areas:
-        'card-title card-title card-title'
-        'card-content card-content card-content'
-        'card-footer card-footer card-footer';
+        'card-title'
+        'card-content'
+        'card-footer';
     padding: 1em;
     background-color: #EABFFF;
     border: 1px solid #F0FFBF;
@@ -19,6 +19,18 @@
     padding: 1em;
     margin-bottom: 1em;
     border-bottom: 1px solid #F6FFD9;
+}
+
+.card .card-title img {
+    grid-area: card-title;
+    max-width: 100%;
+}
+
+.card .card-title span {
+    grid-area: card-title;
+    vertical-align: top;
+    padding: 1em;
+    margin-left: 2em;
 }
 
 .card-content {

@@ -3,13 +3,13 @@
         <div class="card">
             <div class="card-title">
                 <img src="img/img_avatar.png" alt="Avatar" style="width:20%">
-                <slot name="uuid"></slot>
+                <span><slot name="uuid"></slot></span>
             </div>
             <div class="card-content">
-                <p><slot name="name"></slot></p>
-                <p><slot name="short_description"></slot></p>
-                <p><slot name="description"></slot></p>
-                <p><slot name="date"></slot></p>
+                <span><slot name="name"></slot></span>
+                <span><slot name="short_description"></slot></span>
+                <span><slot name="description"></slot></span>
+                <span><slot name="date"></slot></span>
             </div>
             <div class="card-footer">
                 <p>
@@ -24,11 +24,11 @@
             <img src="img/img_avatar.png" alt="Avatar" style="width:100%">
             <div class="container">
                 <h4><b><slot name="name"></slot></b></h4>
-                <p><slot name="short_description"></slot></p>
-                <p><slot name="description"></slot></p>
-                <p><slot name="date"></slot></p>
-                <p><slot name="posted_at"></slot></p>
-                <p><slot name="updated_at"></slot></p>
+                <span><slot name="short_description"></slot></span>
+                <span><slot name="description"></slot></span>
+                <span><slot name="date"></slot></span>
+                <span><slot name="posted_at"></slot></span>
+                <span><slot name="updated_at"></slot></span>
                 <button>button</button>
             </div>
         </div>
