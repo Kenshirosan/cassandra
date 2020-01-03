@@ -10,7 +10,8 @@
         "server": "cross-env NODE_ENV=development nodemon app.js",
         "client": "cross-env NODE_ENV=development npm run serve --prefix client",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "post-build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+        "post-build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+        "seed": "node migrations/seed.js"
     },
     "repository": {
         "type": "git",

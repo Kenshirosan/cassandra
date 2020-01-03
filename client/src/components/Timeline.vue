@@ -1,8 +1,7 @@
 <template>
-  <div class="timeline">
-    <h1>Timeline Component</h1>
-    <div v-if="timelines">
-        <div v-for="timeline in timelines" v-bind:key="timeline.userid">
+    <div class="timeline">
+        <div v-if="timelines" class="grid-container landing">
+            <div v-for="timeline in timelines" v-bind:key="timeline.userid">
 <!--            <li>{{ timeline.userid }}</li>
             <li>{{ timeline.posted_month }}</li>
             <li>{{ timeline.posted_time }}</li>
@@ -10,22 +9,23 @@
             <li>{{ timeline.posted_by }}</li>
             <li>{{ timeline.t }}</li>
             <li>{{ timeline.time }}</li>-->
-            <Card :data="timeline">
-                <template v-slot:uuid>{{ timeline.userid }}</template>
-                <template v-slot:name>{{ timeline.posted_by }}</template>
-                <template v-slot:description>{{ timeline.body }}</template>
-                <template
-                    v-if="timeline.t"
-                    v-slot:date>Created on: {{ timeline.t | moment }}
-                </template>
-                <template
-                    v-if="timeline.time"
-                    v-slot:posted_at>Created on: {{ timeline.time | moment }}
-                </template>
-            </Card>
+
+                <Card :data="timeline">
+                    <template v-slot:uuid>{{ timeline.userid }}</template>
+                    <template v-slot:name>{{ timeline.posted_by }}</template>
+                    <template v-slot:description>{{ timeline.body }}</template>
+                    <template
+                        v-if="timeline.t"
+                        v-slot:date>Created on: {{ timeline.t | moment }}
+                    </template>
+                    <template
+                        v-if="timeline.time"
+                        v-slot:posted_at>Created on: {{ timeline.time | moment }}
+                    </template>
+                </Card>
+            </div>
         </div>
     </div>
-  </div>
 </template>
 
 <script>

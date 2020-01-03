@@ -1,0 +1,68 @@
+.card {
+    margin: auto;
+    text-align: center;
+    grid-area: main;
+    display: grid;
+    grid-template-areas:
+        'card-title card-title card-title'
+        'card-content card-content card-content'
+        'card-footer card-footer card-footer';
+    padding: 1em;
+    background-color: #EABFFF;
+    border: 1px solid #F0FFBF;
+    margin-bottom: 2em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card .card-title {
+    grid-area: card-title;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #F6FFD9;
+}
+
+.card-content {
+    grid-area: card-content;
+}
+
+.card .card-content p {
+    line-height: 2;
+    letter-spacing: 2px;
+}
+
+.card .card-footer {
+    grid-area: card-footer;
+    margin-top: 1em;
+    padding: 1em;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.card-footer p {
+    /*width: 50%;*/
+}
+
+.card-footer button, .cards button {
+    border: none;
+    padding: 1em;
+    background-color: #FFC40E;
+}
+
+.card-footer button {
+    margin-left: 10em;
+}
+
+.cards {
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+}
+
+.cards:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    grid-area: main;
+    padding: 2px 16px;
+}

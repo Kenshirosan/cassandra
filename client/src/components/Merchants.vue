@@ -1,7 +1,6 @@
 <template>
-  <div class="merchants">
-    <h1>Merchants Component</h1>
-    <div v-if="merchants">
+  <div>
+    <div v-if="merchants" class="grid-container landing">
         <div v-for="merchant in merchants.rows" v-bind:key="merchant.id">
             <Card :data="merchant">
                 <template v-slot:uuid>{{ merchant.id }}</template>

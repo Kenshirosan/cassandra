@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 //@author Laurent <laurent@marseille-web.fr>
-const {Mapper} = require('../CassandraClient');
+const { Mapper } = require('../CassandraClient');
 
 class Model extends Mapper {
     created_at() {
