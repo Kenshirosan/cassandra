@@ -12,7 +12,7 @@ const authProvider = new cassandra.auth.PlainTextAuthProvider(config.user, confi
 		keyspace: 'webcreation',
 		authProvider,
 	});
-	const client = client;
+
 // }
 
 module.exports = { client, Mapper };
