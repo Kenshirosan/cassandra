@@ -19,7 +19,12 @@ app.use('/api', api);
 
 //const query = 'SELECT * FROM timeline';
 //client.execute(query, { prepare: true });
-client.connect().then(() => console.log('Cassandra Connected! 🎅🔥🔥')).catch(e => console.log(e.message));
+client.connect().then(() => {
+	res => console.log(res);
+	console.log('Cassandra Connected! 🎅🔥🔥');
+}).catch(e => {
+	console.error(`${e.message}`);
+});
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Cassandra app listening on port ${port}! 🔥🔥🔥`));
