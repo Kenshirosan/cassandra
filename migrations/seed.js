@@ -13,7 +13,9 @@ const queries = [
         address text,
         id uuid,
         username text,
-        verified boolean
+        verified boolean,
+        created_at timeuuid,
+        updated_at timeuuid
     ) WITH comment='users table';`,
 
     `CREATE TABLE products (
@@ -22,13 +24,17 @@ const queries = [
         short_description text,
         description text,
         price int,
-        type text
+        type text,
+        created_at timeuuid,
+        updated_at timeuuid
     ) WITH comment='products table';`,
 
     `CREATE TABLE orders (
         id uuid PRIMARY KEY,
         user_id text,
-        order_details text
+        order_details text,
+        created_at timeuuid,
+        updated_at timeuuid
     ) WITH comment='orders table';`
 
 ];
@@ -41,7 +47,7 @@ async function queryPromise(client, queries) {
                 .catch(e => console.log(e.message))
             );
         }));
-        
+
         reject(`EKIE !`);
     });
 };
