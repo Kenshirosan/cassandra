@@ -33,30 +33,25 @@ const queries = [
 
 ];
 
-async function queryPromise(client) {
+async function queryPromise(client, queries) {
     return new Promise((resolve, reject) => {
-        queries.forEach(query => {
+        resolve(queries.map(query => {
             resolve(client.execute(query)
-                .then(res => {
-                    console.log(`Executing\t\n${query}`);
-                    console.log(`\tSuccess:\n\t\t${res.info.queriedHost} responded OK !`);
-                })
-                .catch(e => {
-                    console.log(`Failed at\n${query}`);
-                    console.log(`\tError:\n\t\t${e.message}`);
-                }));
-        });
+                .then(res => console.log(res.info.queriedHost))
+                .catch(e => console.log(e.message))
+            );
+        }));
+        
         reject(`EKIE !`);
     });
-}
+};
 
-async function migrate(client) {
-    await queryPromise(client).then(() => client.shutdown());
-    console.log('DONE');
+
+async function migrate(client, queries) {
+    await queryPromise(client, queries).then(() => console.log('DONE')).catch(e => console.log(e.message));
+    await client.shutdown().then(() => console.log('Cassandra Disconnected'));
     await process.exit();
 }
 
 
-migrate(client)
-    .then((res) => console.log(`RES: ${res}`) )
-    .catch(e => console.log(`ERror: ${e}`));
+migrate(client, queries);
