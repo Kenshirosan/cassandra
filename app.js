@@ -5,7 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const cassandra = require('cassandra-driver');
 const Mapper = cassandra.mapping.Mapper;
-const { client } = require('./CassandraClient');
+const { userclient } = require('./CassandraClient');
 const api = require('./api');
 const auth = require('./api/auth');
 
@@ -19,7 +19,7 @@ app.use('/api', api);
 
 //const query = 'SELECT * FROM timeline';
 //client.execute(query, { prepare: true });
-client.connect().then(() => {
+userclient.connect().then(() => {
 	res => console.log(res);
 	console.log('Cassandra Connected! 🎅🔥🔥');
 }).catch(e => {

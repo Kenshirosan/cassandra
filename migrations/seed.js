@@ -1,13 +1,5 @@
-const { client } = require('../CassandraClient');
-
-
-client.connect().then(() => {
-	console.log('Cassandra Connected! 🎅🔥🔥');
-}).catch(e => {
-	console.error(`${e.message}`);
-});
-
-// @TODO: replace timeuuid with timestamps
+const { userclient } = require('../CassandraClient');
+const migrate = require('./helper');
 
 const queries = [
     `CREATE TABLE users (
@@ -16,8 +8,8 @@ const queries = [
         id uuid,
         username text,
         verified boolean,
-        created_at timeuuid,
-        updated_at timeuuid
+        created_at timestamp,
+        updated_at timestamp
     ) WITH comment='users table';`,
 
     `CREATE TABLE products (
@@ -27,16 +19,16 @@ const queries = [
         description text,
         price int,
         type text,
-        created_at timeuuid,
-        updated_at timeuuid
+        created_at timestamp,
+        updated_at timestamp
     ) WITH comment='products table';`,
 
     `CREATE TABLE orders (
         id uuid PRIMARY KEY,
         user_id text,
         order_details text,
-        created_at timeuuid,
-        updated_at timeuuid
+        created_at timestamp,
+        updated_at timestamp
     ) WITH comment='orders table';`
 
 ];
@@ -46,7 +38,11 @@ async function queryPromise(client, queries) {
         resolve(queries.map(query => {
             resolve(client.execute(query)
                 .then(res => console.log(res.info.queriedHost))
-                .catch(e => console.log(e.message))
+                .catch(e => {
+                    console.log(e.message);
+                    client.shutdown();
+                    process.exit();
+                })
             );
         }));
 
@@ -54,12 +50,4 @@ async function queryPromise(client, queries) {
     });
 };
 
-
-async function migrate(client, queries) {
-    await queryPromise(client, queries).then(() => console.log('DONE')).catch(e => console.log(e.message));
-    await client.shutdown().then(() => console.log('Cassandra Disconnected'));
-    await process.exit();
-}
-
-
-migrate(client, queries);
+migrate(userclient, queries, queryPromise);
