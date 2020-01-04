@@ -14,7 +14,7 @@
         "seed": "node migrations/seed.js",
         "grant_auth": "node migrations/grant_auth.js",
         "check_migrations": "node migrations/checkMigration.js",
-        "create_keyspace": "node migrations/create_keyspace.js && npm run grant_auth && npm run seed && npm run             check_migrations"
+        "create_keyspace": "node migrations/create_keyspace.js && npm run grant_auth && npm run seed && npm run check_migrations"
     },
     "repository": {
         "type": "git",
