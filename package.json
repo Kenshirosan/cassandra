@@ -11,10 +11,11 @@
         "client": "cross-env NODE_ENV=development npm run serve --prefix client",
         "test": "echo \"Error: no test specified\" && exit 1",
         "post-build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-        "seed": "node migrations/seed.js",
+        "create_tables": "node migrations/create_tables.js",
         "grant_auth": "node migrations/grant_auth.js",
         "check_migrations": "node migrations/checkMigration.js",
-        "create_keyspace": "node migrations/create_keyspace.js && npm run grant_auth && npm run seed && npm run check_migrations"
+        "create_keyspace": "node migrations/create_keyspace.js && npm run grant_auth && npm run create_tables && npm run check_migrations",
+        "migrate": "node migrations/seeds.js"
     },
     "repository": {
         "type": "git",

@@ -29,7 +29,36 @@ const queries = [
         order_details text,
         created_at timestamp,
         updated_at timestamp
-    ) WITH comment='orders table';`
+    ) WITH comment='orders table';`,
+
+    `CREATE TABLE employee_by_id (
+        id int PRIMARY KEY,
+        name text,
+        position text
+    )`,
+
+    `CREATE TABLE employee_by_car_make (
+        car_make text ,
+        id int,
+        car_model text,
+        PRIMARY KEY(car_make, id)
+    )`,
+
+    `CREATE TABLE employee_by_car_make_sorted (
+        car_make text,
+        age int,
+        id int,
+        name text,
+        PRIMARY KEY(car_make, age, id)
+    )`,
+
+    `CREATE TABLE employee_by_car_make_and_model (
+        car_make text,
+        car_model text,
+        id int,
+        name text,
+        PRIMARY KEY((car_make, car_model), id)
+    )`
 
 ];
 

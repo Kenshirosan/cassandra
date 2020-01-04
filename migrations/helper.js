@@ -8,7 +8,7 @@ async function migrate(client, query, funcToRun) {
     await funcToRun(client, query);
     setTimeout(() => {
         client.shutdown();
-        process.exit()
+        process.exit();
     }, 500);
 };
 
