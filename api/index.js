@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { client } = require('../CassandraClient');
+const { userclient } = require('../CassandraClient');
 const Merchant = require('../Models/Merchant');
 const Timeline = require('../Models/Timeline');
 const User = require('../Models/User');
@@ -9,7 +9,7 @@ const User = require('../Models/User');
 
 // @route  /api/merchants
 router.get('/merchants', (req, res) => {
-    const merchant = new Merchant(client);
+    const merchant = new Merchant(userclient);
     merchant.getAll()
         .then(response => res.json(response._rs))
         .catch(e => console.log(e));
@@ -18,7 +18,7 @@ router.get('/merchants', (req, res) => {
 
 // @route  /api/timeline
 router.get('/timeline', (req, res) => {
-    const timeline = new Timeline(client);
+    const timeline = new Timeline(userclient);
     timeline.getAll()
         .then(response => res.json(response))
         .catch(e => console.log(e))
@@ -27,7 +27,7 @@ router.get('/timeline', (req, res) => {
 
 // @route  /api/${email}
 router.get('/users/:email', (req, res) => {
-    const user = new User(client);
+    const user = new User(userclient);
     user.getUser(req.params.email)
         .then(response => res.json(response._rs))
         .catch(e => console.log(e));

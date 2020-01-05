@@ -9,7 +9,7 @@ const path = require('path');
 
 module.exports = {
     devServer: {
-        proxy: 'http://freebsd.test:5000',
+        proxy: 'http://127.0.0.1:5000',
         disableHostCheck: true
     },
 };
