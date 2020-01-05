@@ -1,9 +1,7 @@
 const { userclient } = require('../CassandraClient');
 const migrate = require('./helper');
 const queries = [
-    `SELECT * FROM products;`,
-    `SELECT * FROM users;`,
-    `SELECT * FROM orders;`
+    `SELECT * FROM products_by_categories;`,
 ];
 
 async function queryPromise(client, queries) {
