@@ -1,5 +1,5 @@
-const { userclient } = require('../CassandraClient');
-const { migrate, queryPromise } = require('./helper');
+const { userclient } = require('../../CassandraClient');
+const { migrate, queryPromise } = require('../helper');
 
 const queries = [
     `CREATE TABLE IF NOT EXISTS users_by_email (
@@ -87,7 +87,27 @@ const queries = [
         id int,
         name text,
         PRIMARY KEY((car_make, car_model), id)
-    )`
+    )`,
+    `CREATE TABLE IF NOT EXISTS movies_by_id (
+        movie_id int,
+        movie_title text,
+        movie_genres text,
+        PRIMARY KEY(movie_id, movie_title)
+    ) WITH CLUSTERING ORDER BY (movie_title ASC);`,
+    `CREATE TABLE IF NOT EXISTS ratings_by_movie_id (
+        user_id int,
+        movie_id int,
+        rating double,
+        timestamp timestamp,
+        PRIMARY KEY(rating, movie_id)
+    ) WITH CLUSTERING ORDER BY (movie_id ASC);`,
+    `CREATE TABLE IF NOT EXISTS tags_by_movie_id (
+        user_id int,
+        movie_id int,
+        tag text,
+        timestamp timestamp,
+        PRIMARY KEY(tag, movie_id)
+    ) WITH CLUSTERING ORDER BY (movie_id ASC);`
 ];
 
 

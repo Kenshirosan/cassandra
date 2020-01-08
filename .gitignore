@@ -7,3 +7,4 @@ node.core
 .dbeaver
 .env
 /CassandraClient/.config.js
+*.swp
