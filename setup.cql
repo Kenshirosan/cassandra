@@ -1,34 +1,4 @@
- CREATE TABLE merchants (
-    id uuid PRIMARY KEY,
-    common_name text,
-    merchant_type text
-) WITH comment='Merchant Listing for MarketPlace';
-
-CREATE TABLE timeline (
-    userid uuid,
-    posted_month int,
-    posted_time uuid,
-    body text,
-    posted_by text,
-    PRIMARY KEY (userid, posted_month, posted_time)
-) WITH compaction = { 'class' : 'LeveledCompactionStrategy' };
-
-CREATE TABLE loads (
-    machine inet,
-    cpu int,
-    mtime timeuuid,
-    load float,
-    PRIMARY KEY ((machine, cpu), mtime)
-) WITH CLUSTERING ORDER BY (mtime DESC);
-
-
-CREATE TABLE users (
-    id uuid PRIMARY KEY,
-    email text,
-    username text,
-) WITH comment ='Fake users table';
-
-cassandra defaults: cassandra / cassandra
+ cassandra defaults: cassandra / cassandra
 
 In cassandra.yaml:
 
@@ -56,4 +26,12 @@ LIST ALL PERMISSIONS ON KEYSPACE webcreation;
 GRANT ALL ON KEYSPACE [keyspace] TO laurent;
 
 
+//https://stackoverflow.com/questions/38718623/connecting-two-desktop-pc-into-multi-node-cluster-cassandra
 
+cassandra.yaml on each machine:
+
+    cluster_name - this needs to be the same on both nodes
+    seed_provider.parameters.seeds - this needs to be set to the external IP address of one of the nodes and needs to be the same on both nodes.
+    listen_address - this needs to be set to the external IP address on each machine.
+
+Note: Make sure you can ping each machine from the other on the IP address you use for the listen_address and make sure that the storage_port 7000 isn't blocked by a firewall on either machine.

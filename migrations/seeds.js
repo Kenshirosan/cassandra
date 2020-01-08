@@ -1,4 +1,5 @@
 const { userclient } = require('../CassandraClient');
+const { migrate, queryPromise } = require('./helper');
 
 const queries = [
     `INSERT INTO employee_by_id (id, name, position) VALUES (1, 'Laurent', 'The Boss');`,
@@ -17,3 +18,11 @@ const queries = [
     `INSERT INTO employee_by_car_make_and_model (car_make, car_model, id, name) VALUES ('AUDI', 'Hatchback', 3, 'Toto');`,
 
 ];
+
+
+for (var i = 5; i < 1000; i++) {
+    queries.push(`INSERT INTO employee_by_id (id, name, position) VALUES (${i}, 'Laurent', 'The Boss${i}');`);
+    queries.push(`INSERT INTO employee_by_car_make (car_make, id, car_model) VALUES ('BMW${i}', ${i}, 'Sports Car');`);
+}
+
+migrate(userclient, queries, queryPromise);

@@ -1,16 +1,6 @@
 const { adminclient } = require('../CassandraClient');
-const query = `GRANT ALL ON KEYSPACE webcreation TO laurent;`;
-const migrate = require('./helper');
+const { migrate, queryPromise } = require('./helper');
 
-async function grantAuth(client, query) {
-    console.log(`Attempting query: ${query}`);
-    await client.execute(query)
-        .then(res => console.log(`Success: ${res.info.queriedHost} said OK`))
-        .catch(e => {
-            console.error(e.message);
-            client.shutdown();
-            process.exit();
-        });
-}
+const query = [`GRANT ALL ON KEYSPACE webcreation TO laurent;`];
 
-migrate(adminclient, query, grantAuth);
+migrate(adminclient, query, queryPromise);
