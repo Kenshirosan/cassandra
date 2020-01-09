@@ -32,7 +32,7 @@
 import Card from './layout/Card.vue';
 
 export default {
-    name: 'Timeline',
+    name: 'Ratings',
 
     components: { Card },
 

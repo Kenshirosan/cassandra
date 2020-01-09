@@ -3,40 +3,34 @@ const TimeUuid = require('cassandra-driver').types.TimeUuid;
 
 const mappingOptions = {
     models: {
-        'Timeline': {
-            tables: ['timeline']
+        'Ratings': {
+            tables: ['ratings_by_movie_id']
         }
     }
 };
 
-class Timeline extends Model {
+class Ratings extends Model {
 
     constructor(client) {
         super(client, mappingOptions);
-        this.time = this.forModel('Timeline');
-    }
-
-    getTimeline(id) {
-        return this.time.get({id})
-            .then(res => res)
-            .catch(e => console.log(e));
+        this.ratings = this.forModel('Ratings');
     }
 
     getAll() {
-        const timelines = [];
-        return this.time.findAll()
+        const ratings = [];
+        return this.ratings.findAll()
             .then(res => {
                 res.forEach(r => {
                     if(r.time != null) {
                         r.time = r.time.getDate();
                     }
-                    timelines.push(r);
+                    ratings.push(r);
                 })
-                return timelines;
+                return ratings;
             })
             .catch(err => console.log(err));
     }
 }
 
 
-module.exports = Timeline;
+module.exports = Ratings;

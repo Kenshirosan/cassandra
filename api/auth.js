@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {client} = require('../CassandraClient');
+const { client } = require('../CassandraClient');
 const User = require('../Models/User');
 
 

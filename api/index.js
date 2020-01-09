@@ -1,34 +1,36 @@
 const express = require('express');
 const router = express.Router();
 const { userclient } = require('../CassandraClient');
-const Merchant = require('../Models/Merchant');
-const Timeline = require('../Models/Timeline');
-const User = require('../Models/User');
+const Movies = require('../Models/Movies');
+const Ratings = require('../Models/Ratings');
+const Tags = require('../Models/Tags');
 
 
 
-// @route  /api/merchants
-router.get('/merchants', (req, res) => {
-    const merchant = new Merchant(userclient);
-    merchant.getAll()
-        .then(response => res.json(response._rs))
-        .catch(e => console.log(e));
+// @route  /api/movies
+router.get('/movies', (req, res) => {
+    const movies = new Movies(userclient);
+    const limit = 50;
+
+    movies.getRowsWithLimit(userclient, limit)
+        .then(data => res.json(data))
+        .catch(err => console.error(err));
 });
 
 
-// @route  /api/timeline
-router.get('/timeline', (req, res) => {
-    const timeline = new Timeline(userclient);
-    timeline.getAll()
+// @route  /api/ratings
+router.get('/ratings', (req, res) => {
+    const ratings = new Ratings(userclient);
+    ratings.getAll()
         .then(response => res.json(response))
         .catch(e => console.log(e))
 });
 
 
-// @route  /api/${email}
-router.get('/users/:email', (req, res) => {
-    const user = new User(userclient);
-    user.getUser(req.params.email)
+// @route  /api/tags
+router.get('/users/tags', (req, res) => {
+    const tags = new Tags(userclient);
+    tags.getAll()
         .then(response => res.json(response._rs))
         .catch(e => console.log(e));
 });

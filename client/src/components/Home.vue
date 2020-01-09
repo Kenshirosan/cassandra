@@ -31,17 +31,16 @@ export default {
 
     computed:
         mapState({
-            data: state => state.user,
+            data: state => state.movies,
             message: state => state.message,
         }),
 
     methods: {
-        ...mapActions(['initialLoad', 'load_error']),
+        ...mapActions(['load_error']),
     },
 
     async mounted() {
         try {
-            await this.initialLoad();
             this.loading = false;
         } catch (e) {
             await this.load_error();
