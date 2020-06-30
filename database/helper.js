@@ -18,7 +18,7 @@ async function migrate(client, query, funcToRun) {
 };
 
 async function queryPromise(client, queries) {
-    await queries.forEach(async query => {
+    await queries.forEach( query => {
         client.execute(query)
             .then(response => {
                 console.log(`Attempting: ${query}`);

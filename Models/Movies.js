@@ -31,7 +31,7 @@ class Movies extends Model {
     async getRowsWithLimit(client, limit) {
         const query = `SELECT * FROM movies_by_id LIMIT ?`;
 
-        return await client.execute(query, [limit], { prepare: true });
+        await client.execute(query, [limit], { prepare: true });
     }
 }
 

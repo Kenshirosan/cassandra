@@ -8,3 +8,4 @@ node.core
 .env
 /CassandraClient/.config.js
 *.swp
+.idea

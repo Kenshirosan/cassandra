@@ -1,3 +1,5 @@
+On FreeBSD:
+
  cassandra defaults: cassandra / cassandra
 
 In cassandra.yaml:

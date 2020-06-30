@@ -17,10 +17,6 @@ TODO:
 * Decide what kind of app to do. :/
 * Users must confirm their email.
 
-# Helpers.teachers
-* **Best screencasts ever by** [**Jeffrey Way**](https://laracasts.com)
-
-
 
 download or clone then
 ```tcsh

@@ -1,10 +1,11 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+// import Vue from 'vue';
+// import Vuex from 'vuex';
 
-Vue.use(Vuex);
 
-export default new Vuex.Store({
+export default {
     state: {
+        movies: 'Bienvenue',
+        data: {},
         user: {
             id: null,
             email: '',
@@ -27,8 +28,8 @@ export default new Vuex.Store({
     actions: {
         async initialLoad(context) {
             if (localStorage.bgtrackerjwt) {
-                Vue.axios.defaults.headers.common.Authorization = `Bearer ${localStorage.bgtrackerjwt}`;
-                const res = await Vue.axios.get('/api/auth/currentUser');
+                this.axios.defaults.headers.common.Authorization = `Bearer ${localStorage.bgtrackerjwt}`;
+                const res = await this.axios.get('/api/auth/currentUser');
                 context.commit('CURRENT_USER_FETCHED', res.data.rows[0]);
                 const message = { success: 'Success' };
                 context.commit('LOAD_OK', message);
@@ -42,4 +43,4 @@ export default new Vuex.Store({
     },
     modules: {
     },
-});
+};
