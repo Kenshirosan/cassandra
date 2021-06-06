@@ -1,44 +1,64 @@
-// import Vue from 'vue';
-// import Vuex from 'vuex';
+import Vue from 'vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+
+Vue.use(VueAxios, axios);
 
 
 export default {
     state: {
-        movies: 'Bienvenue',
-        data: {},
+        message: 'Bienvenue',
+        movies: [],
+        data: [],
+        users: [],
         user: {
             id: null,
             email: '',
             username: '',
         },
     },
-    mutations: {
-        CURRENT_USER_FETCHED(state, user) {
-            state.user.id = user.id;
-            state.user.email = user.email;
-            state.user.username = user.username;
-        },
-        LOAD_OK(state, message) {
-            state.message = message.success;
-        },
-        LOAD_ERROR(state, error) {
-            state.message = error.error;
-        },
-    },
+
     actions: {
-        async initialLoad(context) {
+        async initialLoad({ commit }) {
+            const res = await Vue.axios.get('/api/auth/currentUser');
             if (localStorage.bgtrackerjwt) {
-                this.axios.defaults.headers.common.Authorization = `Bearer ${localStorage.bgtrackerjwt}`;
-                const res = await this.axios.get('/api/auth/currentUser');
-                context.commit('CURRENT_USER_FETCHED', res.data.rows[0]);
-                const message = { success: 'Success' };
-                context.commit('LOAD_OK', message);
+                Vue.axios.defaults.headers.common.Authorization = `Bearer ${localStorage.bgtrackerjwt}`;
+                // const res = await this.axios.get('/api/auth/currentUser');
+
+                commit('CURRENT_USER_FETCHED', res.data.rows[0]);
+                commit('LOAD_OK', { success: 'Success' });
             }
+
+            commit('CURRENT_USER_FETCHED', { id: 1, email: 'l.neveux@icloud.com', username: 'Laurent' });
         },
 
-        async load_error(context) {
+        async loadUsers({ commit }) {
+            const res = await Vue.axios.get('/api/auth/currentUser');
+            console.log(res.data.rows);
+            commit('CURRENT_USER_FETCHED', res.data.rows[0]);
+            commit('LOAD_OK', { success: 'Success' });
+        },
+
+        async load_error({ commit }) {
             const message = await { error: 'Something Wrong Happened' };
-            context.commit('LOAD_ERROR', message);
+            commit('LOAD_ERROR', message);
+        },
+    },
+
+    mutations: {
+
+        CURRENT_USER_FETCHED(state, { id, email, username }) {
+            state.user.id = id;
+            state.user.email = email;
+            state.user.username = username;
+        },
+
+        LOAD_OK(state, { success }) {
+            state.message = success;
+        },
+
+        LOAD_ERROR(state, { error }) {
+            state.message = error;
         },
     },
     modules: {

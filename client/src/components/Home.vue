@@ -30,19 +30,18 @@ export default {
     },
 
     computed:
-        mapState({
-            data: state => state.movies,
-            message: state => state.message,
-        }),
+        mapState(['data', 'message', 'user']),
 
     methods: {
-        ...mapActions(['load_error']),
+        ...mapActions(['load_error', 'initialLoad']),
     },
 
     async mounted() {
         try {
+            await this.$store.dispatch('initialLoad');
             this.loading = false;
         } catch (e) {
+            console.log(e);
             await this.load_error();
             this.loading = false;
             this.error = true;

@@ -5,29 +5,34 @@ const Movies = require('../Models/Movies');
 const Ratings = require('../Models/Ratings');
 const Tags = require('../Models/Tags');
 
-
-
-// @route  /api/movies
+/**
+ * @route  /api/movies
+ */
 router.get('/movies', (req, res) => {
     const movies = new Movies(userclient);
     const limit = 50;
 
-    movies.getRowsWithLimit(userclient, limit)
+    movies
+        .getRowsWithLimit(userclient, limit)
         .then(data => res.json(data))
         .catch(err => console.error(err));
 });
 
-
-// @route  /api/ratings
+/**
+ * @route  /api/ratings
+ */
 router.get('/ratings', (req, res) => {
     const ratings = new Ratings(userclient);
-    ratings.getAll()
+    ratings
+        .getAll()
         .then(response => res.json(response))
-        .catch(e => console.log(e))
+        .catch(e => console.log(e));
 });
 
+/**
+ * @route  /api/tags
+ */
 
-// @route  /api/tags
 router.get('/users/tags', (req, res) => {
     const tags = new Tags(userclient);
     tags.getAll()

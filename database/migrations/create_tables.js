@@ -107,8 +107,7 @@ const queries = [
         tag text,
         timestamp timestamp,
         PRIMARY KEY(tag, movie_id)
-    ) WITH CLUSTERING ORDER BY (movie_id ASC);`
+    ) WITH CLUSTERING ORDER BY (movie_id ASC);`,
 ];
-
 
 migrate(userclient, queries, queryPromise);

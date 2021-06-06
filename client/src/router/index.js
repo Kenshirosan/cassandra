@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../components/Home.vue';
+import User from '../components/User.vue';
 import Movies from '../components/Movies.vue';
 import Ratings from '../components/Ratings.vue';
 import Tags from '../components/Tags.vue';
@@ -9,6 +10,7 @@ Vue.use(VueRouter);
 
 const routes = [
     { path: '/', component: Home },
+    { path: '/users', component: User },
     { path: '/movies', component: Movies },
     { path: '/ratings', component: Ratings },
     { path: '/tags', component: Tags },

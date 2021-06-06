@@ -8,7 +8,7 @@ const query = [
         country text,
         phones set<frozen<phone>>,
         zip int
-    );`
+    );`,
 ];
 
 migrate(userclient, query, queryPromise);

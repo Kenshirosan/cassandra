@@ -7,13 +7,13 @@ const cassandra = require('cassandra-driver');
 const Mapper = cassandra.mapping.Mapper;
 const { userclient } = require('./CassandraClient');
 const api = require('./api');
-// const auth = require('./api/auth');
+const auth = require('./api/auth');
 
 dotenv.config();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
-// app.use('/api/auth', auth);
+app.use('/api/auth', auth);
 app.use('/api', api);
 
 

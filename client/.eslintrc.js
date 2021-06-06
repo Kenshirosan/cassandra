@@ -11,7 +11,7 @@ module.exports = {
         'no-console': 'off',
         'no-alert': 'off',
         'no-debugger': 'off',
-        'indent': ["error", 4],
+        'indent': ['error', 4],
         'spaced-comment': 'off',
         'no-underscore-dangle': 'off',
         'no-return-assign': 'off'

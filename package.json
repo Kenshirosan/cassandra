@@ -41,5 +41,40 @@
     "devDependencies": {
         "cross-env": "^6.0.3",
         "nodemon": "^2.0.2"
+    },
+    "prettier": {
+        "printWidth": 80,
+        "tabWidth": 4,
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": false,
+        "overrides": [
+            {
+                "files": "*.vue",
+                "options": {
+                    "parser": "vue",
+                    "vueIndentScriptAndStyle": true
+                }
+            },
+            {
+                "files": "*.js",
+                "options": {
+                    "parser": "babel"
+                }
+            },
+            {
+                "files": "*.json",
+                "options": {
+                    "parser": "json"
+                }
+            }
+        ],
+        "semi": true,
+        "requirePragma": false,
+        "proseWrap": "preserve",
+        "arrowParens": "avoid",
+        "htmlWhitespaceSensitivity": "css",
+        "quoteProps": "as-needed"
     }
 }
