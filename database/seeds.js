@@ -18,7 +18,8 @@ const queries = [
     `INSERT INTO employee_by_car_make_and_model (car_make, car_model, id, name) VALUES ('AUDI', 'Hatchback', 3, 'Toto');`,
 ];
 
-for (var i = 5; i < 1000; i++) {
+let i;
+for (i = 5; i < 1000; i++) {
     queries.push(
         `INSERT INTO employee_by_id (id, name, position) VALUES (${i}, 'Laurent', 'The Boss${i}');`
     );
